@@ -1,0 +1,56 @@
+<%- include('./partials/head.ejs')%>
+
+    <body>
+        <%- include('./partials/navbar.ejs')%>
+            <main>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div id="container">
+                    <hr>
+                    <h1 class="logo">
+                        <%= data.titulo %>
+                    </h1>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                <%= data.descricao%>
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>
+                    <form action="/responder" method="post">
+                        <h3 class="logo">Responda a Pergunta</h3>
+                        <label>Resposta</label>
+                        <textarea class="form-control" name="corpo" placeholder="Digite sua resposta"
+                            required></textarea>
+                        <br>
+                        <button class="btn btn-primary" name="PerguntaId" value="<%=data.id%>">Responda</button>
+                    </form>
+                    <hr>
+                    <br>
+                    <h3 class="logo">Respostas</h3>
+                    <% if(respostas.length>= 1){ %>
+                        <% respostas.forEach(resposta=>{%>
+                            <br>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>
+                                        <%=resposta.corpo%>
+                                    </p>
+                                </div>
+                            </div>
+                            <% }) %>
+                                <%}else{ %>
+                                    <h2 class="text">Ainda não temos Nenhuma Resposta para essa pergunta!! :)<br> Caso
+                                        queira Contruibuir responda! </h2>
+                                    <% } %>
+                </div>
+            </main>
+            <%- include('./partials/final.ejs')%>
+    </body>
+    <%- include('./partials/scripts.ejs')%>

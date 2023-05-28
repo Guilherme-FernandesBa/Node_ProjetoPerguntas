@@ -1,0 +1,36 @@
+<%- include('./partials/head.ejs')%>
+<body>
+    <%- include('./partials/navbar.ejs')%>
+    <main>
+        <br>
+        <br>
+        <br>  
+        <br>
+        <br>  
+        <div id="container">
+            <hr>
+            <h1 class="logo">Perguntas</h1>
+            <br>
+            <% if(data.length >= 1){ %> 
+            <% data.forEach(data => { %>
+                <br>
+                <div class="card">
+                    <div class="card-body">
+                        <p ><%= data.titulo%></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/pergunta_escolhida/<%=data.id%>"><button class="btn btn-primary">Responder</button></a>
+                    </div>
+                </div>
+            <% }) %>
+            <% }else{ %>
+                <h2 class="text">Ainda não temos Nenhuma pergunta!! :)<br> Caso queira perguntar clique no botão! </h2>
+                <br>
+                <a class="btn"  href="/perguntar" >Perguntar!!</a>
+                <% } %>
+        </div>
+
+    </main>
+    <%- include('./partials/final.ejs')%>
+</body>
+<%- include('./partials/scripts.ejs')%>
